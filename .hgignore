@@ -1,0 +1,23 @@
+syntax: glob
+
+build/node_modules/*
+build/public/*
+build/server/*
+node_modules/*
+release/*
+build/*
+.tmp/*
+
+source/client/**/*_old.*
+source/server/config.js
+sftp-config.json
+sublime-gulp.log
+npm-debug
+*.zip
+
+
+.DS_STORE
+.netbeans
+nbproject
+.idea
+.node_history

@@ -1,0 +1,22 @@
+{
+  "name": "kristall",
+  "version": "0.0.1",
+  "description": "bless cms boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "kristall"
+  ],
+  "author": "Firanolfind",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Firanolfind/kristall.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Firanolfind/kristall/issues"
+  },
+  "homepage": "https://github.com/Firanolfind/kristall#readme"
+}
