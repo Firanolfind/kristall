@@ -13,8 +13,20 @@ sublime-gulp.log
 npm-debug
 *.zip
 
-
-.DS_STORE
+.hg
+.git
+.svn
+CVS
+.lock-wscript
+.wafpickle-N
+.*.swp
+.DS_Store
+._*
+.npmrc
+npm-debug.log
+node_modules
+config.gypi
+*.orig
 .netbeans
 nbproject
 .idea
