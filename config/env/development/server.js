@@ -20,8 +20,8 @@ module.exports = {
 		}
 	},
 	settings: {
-		port:						3300,
 		host:						'localhost',
+		port:						3000,
 		router: {
 			stripTrailingSlash: 	true,
 			isCaseSensitive: 		false
