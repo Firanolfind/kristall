@@ -8,27 +8,17 @@ require('colors');
 
 const Pump		= require('pump'),
 	GUtil		= require('gulp-util');
-/*
-const Pump	= require('pump');
 
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var sourcemaps = require('gulp-sourcemaps');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
-var watchify = require('watchify');
-var browserify = require('browserify');*/
-
-const clientTask = require('./client');
+const client = require('./client');
 
 module.exports = {
-	deps: [],
+	deps: ['server:html', 'images:raster', 'images:svg', 'styles:imagehelper', 'styles:sass'],
 	fn: function(Gulp, cb){
 
 		const cache = {};
 		const packageCache = {};
-		const b = clientTask.browserify(true, cache, packageCache);
-		const bundle = clientTask.bundle.bind(this, Gulp, b);
+		const b = client.browserify(true, cache, packageCache);
+		const bundle = client.bundle.bind(this, Gulp, b);
 
 		b.on('update', bundle);
 		bundle();
