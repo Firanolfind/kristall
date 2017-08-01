@@ -1,6 +1,7 @@
 /**
  * @config
  * @title Project
+ * @name project
  */
 
 module.exports = (()=>{
