@@ -12,7 +12,7 @@ const Pump		= require('pump'),
 const client = require('./client');
 
 module.exports = {
-	deps: ['server:html', 'images:raster', 'images:svg', 'styles:imagehelper', 'styles:sass'],
+	deps: ['images:raster', 'images:svg', 'styles:imagehelper', 'styles:sass', 'server:html', 'server:start'],
 	fn: function(Gulp, cb){
 
 		const cache = {};

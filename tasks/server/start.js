@@ -10,6 +10,6 @@ const Pump	= require('pump');
 module.exports = {
 	deps: ['build'],
 	fn: function(Gulp, cb){
-
+		cb();
 	}
 };
