@@ -1,1 +1,2 @@
-###Paradigma
+# Kristall
+React + Gulp boilerplate
