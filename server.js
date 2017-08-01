@@ -1,24 +1,55 @@
 require('colors');
 
-const port = 3000;
+const Path 			= require('path'),
+	Hapi 			= require('hapi'),
+	Inert 			= require('inert'),
+	RequireDir 		= require('require-dir'),
+	_ = {
+		defaultsDeep: require('lodash.defaultsdeep')
+	};
 
-const Express = require('express');
+const CONFIG 	= RequireDir('./config', {recurse: true});
+const NODE_ENV 	= process.env.NODE_ENV = process.env.NODE_ENV ? process.env.NODE_ENV : 'development';
+const DEV		= NODE_ENV !== 'production';
+const VERBOSE	= CONFIG.env[NODE_ENV].server.verbose;
 
-//Server
-const App = new Express();
+// New Server
+const Server = new Hapi.Server(CONFIG.env[NODE_ENV].server.options);
 
-App.use(Express.static('build'));
+// Setting up the server
+Server.connection(
+	_.defaultsDeep({
+		routes: {
+			files: {
+				relativeTo: CONFIG.paths.server.public.dir,
+				relativeTo: Path.join(__dirname, 'build')
+			},
+		}
+	}, CONFIG.env[NODE_ENV].server.settings));
 
-//static files
-App.get("/", function(req, res) {
-	res.sendFile(__dirname + '/build/index.html');
-})
+// Register static handler plugin
+Server.register(Inert, () => {});
 
-//start server
-App.listen(port, function(err) {
-	if(err){
-		console.error(err)
-	}else{
-		console.info("==> Listennin on port " + "%s".red + ". Address "	+ "http://localhost:%s/".yellow, port, port);
+// Routes
+Server.route([{ // route to static files
+	method: 'GET',
+	path: Path.posix.join(CONFIG.paths.server.url.static, '/{path*}'),
+	config: {
+		handler: {
+			directory: {
+				path: Path.join(__dirname, CONFIG.paths.server.public.dir),
+				redirectToSlash: 	true,
+				index: 				true
+			} 
+		}
 	}
-})
+}]);
+
+// Start the server
+Server.start(function(){
+	VERBOSE && console.log(`+-----------------------------------------------+`.yellow	);
+	VERBOSE && console.log(`|  `.yellow, `Server started!`.white						);
+	VERBOSE && console.log(`+-----------------------------------------------+`.yellow	);	
+	VERBOSE && console.log(`Server running at => `.white + Server.info.uri.yellow	);
+	VERBOSE && console.log(`+-----------------------------------------------+`.yellow	);
+});
