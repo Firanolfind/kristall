@@ -8,7 +8,7 @@
 const Pump	= require('pump');
 
 module.exports = {
-	deps: ['styles:sass', 'fonts', 'client', 'server:html'],
+	deps: ['styles:imagehelper', 'fonts', 'client', 'server:html', 'styles:sass'],
 	fn: function(Gulp, cb){
 		cb();
 	}
