@@ -9,6 +9,7 @@ const Pump		= require('pump'),
  	GulpIf		= require('gulp-if'),
  	Concat		= require('gulp-concat'),
 	Sass 		= require('gulp-sass'),
+	SassVars	= require('gulp-sass-variables'),
 	AutoPrefixer = require('gulp-autoprefixer'),
 	Insert 		= require('gulp-insert'),
 	CssBase64	= require('gulp-css-base64');
@@ -26,9 +27,12 @@ module.exports = {
 			
 			// output name regarding environment
 			Concat(CONFIG.paths.build.styles[DEV ? 'filename' : 'filename_min']),
-			
+
+			// pass vars to sass
+			SassVars(CONFIG.sass.vars(CONFIG, NODE_ENV)),
+
 			// preprocess css with sass
-			Sass(CONFIG.env[NODE_ENV].sass)
+			Sass(CONFIG.env[NODE_ENV].sass.settings)
 				.on('error', Sass.logError),
 			
 			// add css3 prefixes

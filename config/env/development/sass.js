@@ -6,7 +6,9 @@
  */
 
 module.exports = {
-	errLogToConsole: true,
-	outputStyle: 'nested',
-	sourceComments: false,
+	settings: {
+		errLogToConsole: true,
+		outputStyle: 'nested',
+		sourceComments: false
+	}
 };
