@@ -1,5 +1,6 @@
 /*
  * @title Pipeline
+ * @project Kristall
  * @script
  * @description project pipeline, task manager, bundle of gulp tasks
  */
