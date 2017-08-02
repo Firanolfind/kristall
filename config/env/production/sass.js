@@ -6,7 +6,9 @@
  */
 
 module.exports = {
-	errLogToConsole: true,
-	outputStyle: 'compressed',
-	sourceComments: false,
+	settings: {
+		errLogToConsole: true,
+		outputStyle: 'compressed',
+		sourceComments: false,
+	}
 };
