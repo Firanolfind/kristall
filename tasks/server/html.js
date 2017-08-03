@@ -18,7 +18,7 @@ module.exports = {
 		const DEV 			= NODE_ENV !== 'production';
 
 		// resolve public path function
-		const publicPath	= path => Path.posix.join('/', 
+		const publicPath	= path => Path.posix.join('/', CONFIG.paths.server.url.static, 
 										Path.posix.relative(
 											CONFIG.paths.build['*'].dir, path));
 
