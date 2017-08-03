@@ -10,6 +10,6 @@ module.exports = {
 		files: 	'./build/**/*.**',
 	},
 	url: {
-		static: '/'
+		static: '/public/'
 	}
 };

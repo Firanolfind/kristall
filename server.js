@@ -43,6 +43,11 @@ Server.route([{ // route to static files
 			} 
 		}
 	}
+},{ // route others
+	method: 'GET',
+	path: '/{path*}',
+	handler: (req, reply) => 
+		reply.file(Path.join(__dirname, CONFIG.paths.server.public.dir, CONFIG.paths.build.server.html.filename))
 }]);
 
 // Start the server
