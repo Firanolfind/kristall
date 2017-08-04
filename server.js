@@ -22,7 +22,7 @@ Server.connection(
 		routes: {
 			files: {
 				relativeTo: CONFIG.paths.server.public.dir,
-				relativeTo: Path.join(__dirname, 'build')
+				relativeTo: Path.posix.join(__dirname, 'build')
 			},
 		}
 	}, CONFIG.env[NODE_ENV].server.settings));
@@ -37,7 +37,7 @@ Server.route([{ // route to static files
 	config: {
 		handler: {
 			directory: {
-				path: Path.join(__dirname, CONFIG.paths.server.public.dir),
+				path: Path.posix.join(__dirname, CONFIG.paths.server.public.dir),
 				redirectToSlash: 	true,
 				index: 				true
 			} 
@@ -47,7 +47,7 @@ Server.route([{ // route to static files
 	method: 'GET',
 	path: '/{path*}',
 	handler: (req, reply) => 
-		reply.file(Path.join(__dirname, CONFIG.paths.server.public.dir, CONFIG.paths.build.server.html.filename))
+		reply.file(Path.posix.join(__dirname, CONFIG.paths.server.public.dir, CONFIG.paths.build.server.html.filename))
 }]);
 
 // Start the server

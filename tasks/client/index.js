@@ -42,7 +42,7 @@ const Task = module.exports = {
 		// babelify transform
 		b.transform(Babel.configure(CONFIG.env[NODE_ENV].babel));
 
-		b.on('error', GUtil.log.bind(GUtil, 'Browserify Error'.red))
+		b.on('error', GUtil.log.bind(GUtil, 'Browserify Error'.red, '\n'))
 
 		return b;
 	},
@@ -57,7 +57,11 @@ const Task = module.exports = {
 
 		return Pump([
 			// bundle browserify
-			b.bundle(),
+			b.bundle()
+				.on('error', function(err){
+					GUtil.log('Browserify Error'.red, '\n', err.message)
+					this.emit('end');
+				}),
 
 			// convert to vinyl buffer stream, add filename
 			Source(CONFIG.paths.build.client[DEV ? 'filename' : 'filename_min']),
