@@ -68,6 +68,7 @@
     "imagemin-pngquant": "^5.0.1",
     "inert": "^4.2.1",
     "lodash.defaultsdeep": "^4.6.0",
+    "pathmodify": "^0.5.0",
     "pump": "^1.0.2",
     "require-dir": "^0.3.2",
     "through2": "^2.0.3",
