@@ -43,8 +43,8 @@ module.exports = {
 		dir: 		'./source/images/',
 	},
 	fonts: {
-		filename: 	'**/*.{jpg,ttf,woff,eot,svg}',
-		files: 		'./source/fonts/**/*.{ttf,woff,eot,svg}',
+		filename: 	'**/*.{jpg,ttf,woff,woff2,eot,svg}',
+		files: 		'./source/fonts/**/*.{ttf,woff,woff2,eot,svg}',
 		dir: 		'./source/fonts/',
 	}
 };

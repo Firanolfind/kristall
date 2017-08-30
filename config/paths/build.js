@@ -56,7 +56,7 @@ module.exports = {
 	},
 	fonts: {
 		filename: 		'**/*.{ttf,woff,woff2,eot,svg}',
-		files: 			'./build/assets/fonts/**/*.{jpg,ttf,woff,eot,svg}',
+		files: 			'./build/assets/fonts/**/*.{jpg,ttf,woff,woff2,eot,svg}',
 		dir: 			'./build/assets/fonts/',
 	}
 };
