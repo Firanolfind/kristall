@@ -38,8 +38,9 @@
   "dependencies": {
     "colors": "^1.1.2",
     "fs-extra": "^4.0.2",
-    "lodash.defaults": "^4.2.0",
+    "lodash.merge": "^4.6.0",
     "lodash.pick": "^4.4.0",
+    "sort-package-json": "^1.7.1",
     "yargs": "^9.0.1"
   },
   "engines": {

@@ -1,4 +1,8 @@
 {
+  "title": "",
+  "name": "",
+  "version": "0.0.0",
+  "description": "kristall project",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -17,18 +21,10 @@
     "boilerplate"
   ],
   "author": {
-    "name": "Firanolfind",
-    "url": "https://github.com/Firanolfind"
+    "name": "",
+    "url": ""
   },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Firanolfind/kristall.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Firanolfind/kristall/issues"
-  },
-  "homepage": "https://github.com/Firanolfind/kristall#readme",
+  "license": "",
   "devDependencies": {
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-external-helpers": "^6.22.0",

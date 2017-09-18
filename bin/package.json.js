@@ -3,60 +3,50 @@
  */
 
 const Util = require('util');
-const defaults = require('lodash.defaults')
-const pick = require('lodash.pick')
+const pick = require('lodash.pick');
+const merge = require('lodash.merge');
+const sortPackageJson = require('sort-package-json');
 
 
 /**
  *
- * @param	{[type]} 	options 	[description]
- * @param	{[type]} 	packageJson [description]
- * @return	{[type]}	jsonObject 	[description]
- */
-	
-
-
-
-
-/**
- *
- * @param	{[type]} 	options 	[description]
- * @param	{[type]} 	packageJson [description]
- * @return	{[type]}	jsonObject 	[description]
+ * @param	{[type]} 	options 	[arguments options and defaults]
+ * @return	{[type]}	jsonObject 	[json object to save package.json]
  */
 const generatePackageJson = function(options){
 
-	const packageJson = pick(require('../app/package.json'), 
-			'main',
-			'scripts',
-			'directories',
-			'keywords',
-			'devDependencies',
-			'dependencies',
-			'engines'
-		);
+	var packageJson = pick(require('../app/package.json'), 
+		'main',
+		'version',
+		'description',
+		'main',
+		'scripts',
+		'directories',
+		'keywords',
+		'devDependencies',
+		'engines'
+	);
 
-	// console.log(packageJson);
-
-	if(!options.title && options.name)
-		options.title = options.name.charAt(0).toUpperCase() + options.name.slice(1)
-
-	return defaults(packageJson, {
-		title: 					options.title,
+	packageJson = sortPackageJson(merge(packageJson, {
 		name: 					options.name,
 		version: 				options.version,
 		description: 			options.description,
 		author: {
-			"name": options.username,
-			"url": `https://github.com/${options.username}`
+			"name": options.author,
+			"url": `https://github.com/${options.author}`
 		},
-		license:				options.license ? options.license : "",
+		license: 				options.license,
 		repository: {
 			"type": "git",
-			"url": `git+https://github.com/${options.username}/${options.name}.git`
+			"url": `git+https://github.com/${options.author}/${options.name}.git`
 		},
-	});
-}
+	}));
 
+	packageJson = Object.assign({
+		title: 		options.title,
+	}, packageJson);
+
+	return packageJson;
+}
 
 module.exports = generatePackageJson;

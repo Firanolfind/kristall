@@ -26,37 +26,36 @@ Yargs
 		alias: 'V'
 	})
 	.option('appname', {
-		default: false,
+		default: undefined,
 		description: 'application name',
 		alias: 'a',
 		type: 'string'
 	})
 	.option('title', {
-		default: false,
+		default: undefined,
 		description: 'application title',
 		alias: 't',
 		type: 'string'
 	})
 	.option('username', {
-		default: false,
-		description: 'user name',
+		default: undefined,
+		description: 'author user name',
 		alias: 'u',
 		type: 'string'
 	})
 	.option('appversion', {
-		default: false,
+		default: undefined,
 		description: 'application version',
-		alias: 'av',
 		type: 'string'
 	})
 	.option('desc', {
-		default: false,
+		default: undefined,
 		description: 'user description',
 		alias: 'd',
 		type: 'string'
 	})
 	.option('license', {
-		default: false,
+		default: undefined,
 		description: 'user license',
 		alias: 'l',
 		type: 'string'
@@ -87,7 +86,7 @@ const verbose = argv.verbose;
 
 
 // make dir
-const mkdir = dir => new Promise((resolve, reject)=>{
+const mkDir = dir => new Promise((resolve, reject)=>{
 	FS.mkdir(dir, err=>{
 		if(err){
 			reject(err);
@@ -115,37 +114,48 @@ const mkJson = (dir, fname, json)=> new Promise((resolve, reject)=>{
 //Create new
 if(argv._.indexOf('new') >= 0){
 
+	// Application name
+	var appName = argv.path;
+	// Ensure that default app name is not "." or "" and does not contain slashes.
+	if (appName === '.' || appName === './' || !appName)
+		appName = Path.basename(process.cwd());
+	appName = argv.appname ? argv.appname : appName;
+	console.log(appName)
+	appName = appName.replace(/.\//, '')
+						.replace(/\//, '-');
+
+	// Author
+	var author = process.env.USER || 'anonymous';
+	author = argv.username ? argv.username : author;
+
+	// App title
+	var title = argv.title ? argv.title : appName.charAt(0).toUpperCase() + appName.slice(1)
+
+	var options = {
+		title: 			title,
+		name: 			appName,
+		author: 		author,
+		version: 		argv.appversion,
+		description: 	argv.desc,
+		license: 		argv.license,
+		year:			(new Date()).getFullYear()
+	};
+
 	const dir = Path.posix.resolve(__dirname, '../', argv.path);
 	const generatePackageJson 	= require('./package.json.js');
 
-	var defaultAppName = args0;
+	var package_json 			= generatePackageJson(options);
+	console.log(options)
 
-	// Ensure that default app name is not "." or "" and does not contain slashes.
-	if (defaultAppName === '.' || defaultAppName === './' || !defaultAppName) {
-		defaultAppName = path.basename(process.cwd());
-	}
-	defaultAppName = defaultAppName.replace(/\//, '-');
-
-	var options = {
-		author: process.env.USER || 'anonymous node/sails user',
-		year: (new Date()).getFullYear(),
-		appName: defaultAppName
-
-	};
-
-
-
-	var package_json 			= generatePackageJson({});
-
-	mkdir(dir)
+	mkDir(dir)
 		.then(()=>{
 			Promise.all([
 				mkJson(dir, 'package.json', package_json),
-				FSE.copy('app/config', Path.resolve(dir, 'config')),
-				FSE.copy('app/source', Path.resolve(dir, 'source')),
-				FSE.copy('app/tasks', Path.resolve(dir, 'tasks')),
+				FSE.copy('app/config', 		Path.resolve(dir, 'config')),
+				FSE.copy('app/source', 		Path.resolve(dir, 'source')),
+				FSE.copy('app/tasks', 		Path.resolve(dir, 'tasks')),
 				FSE.copy('app/pipeline.js', Path.resolve(dir, 'pipeline.js')),
-				FSE.copy('app/server.js', Path.resolve(dir, 'server.js'))
+				FSE.copy('app/server.js', 	Path.resolve(dir, 'server.js'))
 			]).catch(err=>{
 				console.error(err.red);
 				setImmediate(()=>{
@@ -162,9 +172,5 @@ if(argv._.indexOf('new') >= 0){
 			setImmediate(()=>{
 				process.exit(1);
 			});
-		})
-
-
-	
-
+		});
 }
