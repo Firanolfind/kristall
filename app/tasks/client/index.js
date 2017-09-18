@@ -7,9 +7,11 @@
 require('colors');
 
 const Pump		= require('pump'),
+	Path		= require('path'),
 	GUtil		= require('gulp-util'),
 	GulpIf		= require('gulp-if'),
  	Browserify	= require('browserify'),
+ 	PathModify	= require('pathmodify'),
  	Watchify	= require('watchify'),
  	Babel		= require('babelify'),
  	Header		= require('gulp-header'),
@@ -25,15 +27,33 @@ const Task = module.exports = {
 		const NODE_ENV 	= process.env.NODE_ENV;
 		const DEV 		= NODE_ENV !== 'production';
 
+		const clientPath = Path.posix.join(
+			process.cwd(), 
+			CONFIG.paths.source.client.dir
+		);
+
 		// browserify instanse
 		const b = Browserify(CONFIG.paths.source.client.file,
 				Object.assign({}, CONFIG.env[NODE_ENV].browserify, {
-					// basedir: 		__dirname,
+					// basedir: 		clientPath,
 					cache: 			cache,
 					packageCache: 	packageCache,
-					// plugin:			[Watchify]
 				})
 			);
+
+		b.plugin(PathModify, {mods: [
+			function (rec) {
+				var alias = {};
+				var prefix = '/';
+				if (rec.id.indexOf(prefix) === 0) {
+					alias.id = Path.posix.join(
+						clientPath, 
+						rec.id.substr(prefix.length)
+					);
+				}
+				return alias;
+			}
+		]})
 
 		// watchify plugin
 		if(watch)
@@ -81,7 +101,7 @@ const Task = module.exports = {
 		], function(){
 
 			end = new Date().getTime();
-	        time = end - start;
+					time = end - start;
 			GUtil.log('browserify'.blue, 'rebundle took', (time + ' ms').magenta);
 
 			cb && typeof cb === 'function' && cb();
@@ -95,4 +115,3 @@ const Task = module.exports = {
 		Task.bundle(Gulp, b, cb);
 	}
 };
-
