@@ -5,6 +5,7 @@ require('colors');
 const Util 	= require('util');
 const Yargs = require('yargs');
 const Path	= require('path');
+const FS	= require('fs');
 
 Yargs
 	.help(false)
@@ -33,6 +34,8 @@ Yargs
 const Commands = Yargs.getCommandInstance().getCommands();
 const argv = Yargs.argv;
 
+
+
 //Exit of no command
 if (!argv._[0] || Commands.indexOf(argv._[0]) === -1) {
 	Yargs.showHelp();
@@ -42,6 +45,8 @@ if (!argv._[0] || Commands.indexOf(argv._[0]) === -1) {
 
 const verbose = argv.verbose;
 
+
+
 //Create new
 if(argv._.indexOf('new') >= 0){
 	console.log('instalation...');
@@ -49,8 +54,15 @@ if(argv._.indexOf('new') >= 0){
 
 	var generatePackageJson = require('./package.json.js');
 
-	console.log(argv);
-	console.log(Path.posix.resolve(__dirname, '../', argv.path));
+	var path = Path.posix.resolve(__dirname, '../', argv.path, 'package.json')
 
-	console.log(generatePackageJson({}))
+	console.log(argv);
+	console.log(path);
+
+	console.log(generatePackageJson({}));
+
+	FS.writeFile(path, JSON.stringify(generatePackageJson({}), null, "  "), err=>{
+		console.error(err);
+	});
+
 }

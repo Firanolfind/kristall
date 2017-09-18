@@ -17,7 +17,6 @@ const pick = require('lodash.pick')
 
 
 
-	// return FS.writeFile(config.path.build.manifest.file, JSON.stringify(config.manifest, null, "\n\n"), event);
 
 /**
  *
@@ -27,7 +26,7 @@ const pick = require('lodash.pick')
  */
 const generatePackageJson = function(options){
 
-	const packageJson = pick(require('../package.json'), 
+	const packageJson = pick(require('../app/package.json'), 
 			'main',
 			'scripts',
 			'directories',
