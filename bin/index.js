@@ -6,10 +6,10 @@ const Util 	= require('util');
 const Yargs = require('yargs');
 const Path	= require('path');
 const FS	= require('fs');
-const FSE	= require('fs-extra')
+const FSE	= require('fs-extra');
 
 Yargs
-	.help(false)
+	.help()
 	.usage('Usage: $0 <cmd> [options]')
 	.command({
 		command: 'new <path> [value]',
@@ -64,35 +64,21 @@ Yargs
 	.alias('version', 'v')
 	.example('kristall new app'.yellow, 'creates new project')
 	.epilog('for more information visit https://github.com/firanolfind/kristall')
-	.demandCommand(1, 'non-existing or no command specified'.red)
 	.showHelpOnFail(true);
+
+
 
 const Commands = Yargs.getCommandInstance().getCommands();
 const argv = Yargs.argv;
 
-
-
-//Exit of no command
-if (!argv._[0] || Commands.indexOf(argv._[0]) === -1) {
+//Exit if no command
+if (!argv._[0] || (Commands.indexOf(argv._[0]) === -1 && argv._[0] !== 'help') ) {
 	Yargs.showHelp();
 	console.log('non-existing or no command specified'.red);
 	process.exit(1);
 }
 
-const verbose = argv.verbose;
-
-
-
-
-
-
-
-
-
-
-//Create new
+//Create new task
 if(argv._.indexOf('new') >= 0){
-
-	require('../lib/createNew')(argv);
-
+	require('../lib/new')(argv);
 }
