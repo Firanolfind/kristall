@@ -1,0 +1,48 @@
+{
+  "title": "Kristall",
+  "name": "kristall",
+  "version": "0.0.4",
+  "description": "serious front-end boilerplate",
+  "main": "bin/index.js",
+  "bin": {
+    "kristall": "./bin"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+  },
+  "directories": {
+    "app": "./app",
+    "config": "./app/config",
+    "tasks": "./app/tasks",
+    "source": "./app/source",
+    "build": "./app/build"
+  },
+  "keywords": [
+    "kristall",
+    "front-end",
+    "boilerplate"
+  ],
+  "author": {
+    "name": "Firanolfind",
+    "url": "https://github.com/Firanolfind"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Firanolfind/kristall.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Firanolfind/kristall/issues"
+  },
+  "homepage": "https://github.com/Firanolfind/kristall#readme",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "lodash.defaults": "^4.2.0",
+    "lodash.pick": "^4.4.0",
+    "yargs": "^9.0.1"
+  },
+  "engines": {
+    "node": ">=6.11.1",
+    "npm": ">=2.0.0"
+  }
+}

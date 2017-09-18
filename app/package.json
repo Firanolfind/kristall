@@ -1,12 +1,5 @@
 {
-  "title": "Kristall",
-  "name": "kristall",
-  "version": "0.0.3",
-  "description": "serious front-end boilerplate",
-  "main": "index.js",
-  "bin": {
-    "kristall": "./bin"
-  },
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -79,13 +72,7 @@
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.9.0"
   },
-  "dependencies": {
-    "bootstrap": "^4.0.0-alpha.6",
-    "lodash.defaults": "^4.2.0",
-    "lodash.pick": "^4.4.0",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
-  },
+  "dependencies": {},
   "engines": {
     "node": ">=6.11.1",
     "npm": ">=2.0.0"
