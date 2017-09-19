@@ -1,7 +1,7 @@
 {
   "title": "Kristall",
   "name": "kristall",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Modern Front-end Application Boilerplate",
   "main": "bin/index.js",
   "bin": {
