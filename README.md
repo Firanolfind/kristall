@@ -4,7 +4,7 @@ Modern Front-end Application Boilerplate
 Current core stack: **browserfy + babel + sass + gulp**
 
 ## Purpose
-Allow developer to controls tools, not vice versa. To achieve painlessly project tune.
+Allow developer to controls tools, not vice versa. Main goal is to achieve painlessly project tune.
 
 ## Advantages
 Flexibility, easy customization. Configuration in one place. Tasks tree structure.
@@ -22,6 +22,12 @@ Create new project using command
 ```
 kristall new path-to-app
 cd path-to-app
+```
+
+Install dependencies
+
+```
+npm install
 ```
 
 Start watch daemon
