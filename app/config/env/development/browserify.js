@@ -6,8 +6,13 @@
  */
 
 module.exports = { 
-	debug: true,
+	debug: 				true,
 	extensions: 		['.js', '.json', '.jsx'],
+	detectGlobals:		false,
+	insertGlobals: 		true,
+	ignoreMissing:		false,
+	standalone:			false,
+	noParse: [],
 	bundleExternal: 	true,
 	detectGlobals:		true,
 	insertGlobals:		false,
