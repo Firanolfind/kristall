@@ -15,9 +15,10 @@ module.exports = {
 		load: {
 			sampleInterval:			60 	* 1000, // ms
 		},
-		debug: {
+		debug: false,
+		/*{
 			request: ['error', 'uncaught'],
-		}
+		}*/
 	},
 	settings: {
 		host:						'localhost',
