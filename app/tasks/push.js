@@ -2,7 +2,7 @@
  * @title Push Repository Release ??
  * @task
  * @name ??
- * @description dono yes
+ * @description dono yet
  */
 
 const Pump	= require('pump');

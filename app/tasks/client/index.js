@@ -4,7 +4,6 @@
  * @name client
  * @description creates javascript bundle from es6 modules, minifies output depending on environment mode
  */
-require('colors');
 
 const Pump		= require('pump'),
 	Path		= require('path'),

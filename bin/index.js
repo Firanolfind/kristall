@@ -8,6 +8,8 @@ const Path	= require('path');
 const FS	= require('fs');
 const FSE	= require('fs-extra');
 
+const kristallJson = require('../package.json');
+
 Yargs
 	.help()
 	.usage('Usage: $0 <cmd> [options]')
@@ -60,7 +62,7 @@ Yargs
 		alias: 'l',
 		type: 'string'
 	})
-	.version('version', 'display version information', '1.0.1')
+	.version('version', 'display version information', kristallJson.version)
 	.alias('version', 'v')
 	.example('kristall new app'.yellow, 'creates new project')
 	.epilog('for more information visit https://github.com/firanolfind/kristall')

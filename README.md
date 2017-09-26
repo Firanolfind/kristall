@@ -1,3 +1,6 @@
+[![NPM Version](http://img.shields.io/npm/v/kristall.svg?style=flat-square)](https://npmjs.org/package/kristall) [![npm](https://img.shields.io/npm/dm/kristall.svg?style=flat-square)](https://npmjs.org/package/kristall)
+
+
 # Kristall
 Modern Front-end Application Boilerplate
 
@@ -7,7 +10,7 @@ Current core stack: **browserfy + babel + sass + gulp**
 Allow developer to controls tools, not vice versa. Main goal is to achieve painlessly project tune.
 
 ## Advantages
-Flexibility, easy customization. Configuration in one place. Tasks tree structure.
+Flexibility, easy customization. Configuration in one place. Tasks and configs in tree structure.
 
 ## Install
 
@@ -20,7 +23,7 @@ npm install -g kristall
 Create new project using command
 
 ```
-kristall new path-to-app
+kristall new path-to-your-app
 cd path-to-app
 ```
 
@@ -47,6 +50,16 @@ npm run task client
 ```
 npm run task server:html
 ```
+
+### Watch Tasks
+
+List of npm tasks
+* `client:watch`
+* `server:watch`
+* `styles:watch`
+* `images:watch`
+* `fonts:watch`
+
 
 ## Presets
 By default Babel setup for **ES2015** and **React** presets. 

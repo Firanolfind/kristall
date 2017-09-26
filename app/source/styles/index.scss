@@ -1,0 +1,10 @@
+/*
+ * Defined global variables:
+ *
+ * $_NODE_ENV	project environment ['development', 'production']
+ * $_PATH_IMG	relative path to images
+ * $_PATH_FONT	relative path to fonts
+ * $_PATH_NODE_MODULES	relative path to node_modules 
+ *
+ * Example `@import '#{$_PATH_NODE_MODULES}/bootstrap/scss/bootstrap';`
+ */

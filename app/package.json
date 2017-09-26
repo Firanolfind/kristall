@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "task": "gulp --gulpfile=pipeline.js"
+    "task": "gulp --gulpfile=pipeline.js",
+    "watch": "gulp watch --gulpfile=pipeline.js"
   },
   "directories": {
     "config": "./config",

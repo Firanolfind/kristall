@@ -11,5 +11,8 @@ module.exports = {
 	},
 	url: {
 		static: '/public/'
+	},
+	startup: {
+		script: './server.js',
 	}
 };

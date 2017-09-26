@@ -12,6 +12,7 @@
   },
   "directories": {
     "app": "./app",
+    "lib": "./lib",
     "config": "./app/config",
     "tasks": "./app/tasks",
     "source": "./app/source",

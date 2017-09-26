@@ -16,7 +16,7 @@
  │\  │   │                
  │ `───────────────────────────────────────────────────────────────────────-.
  │     _  __       _       _          _  _                              .─.  \
- │    │ │/ / _ __ (_) ___ │ │_  __ _ │ ││ │          v0.0.3            /   \  │
+ │    │ │/ / _ __ (_) ___ │ │_  __ _ │ ││ │          v0.1.0            /   \  │
  │    │ ' / │ '__││ │/ __││ __│/ _` ││ ││ │                           │    /│ │
  │    │ . \ │ │   │ │\__ \│ │_│ (_│ ││ ││ │    npm install kristall   │\  │ │/│
  │    │_│\_\│_│   │_││___/ \__│\__,_││_││_│                           │ `───' │
@@ -39,6 +39,31 @@ const DEV 			= NODE_ENV !== 'production';
 
 // export global configuration
 global.CONFIG = CONFIG;
+
+// export global child processes
+global.CHILD_PROCESSES = [];
+
+// Handle exit
+function exitHandler(options, err) {
+	if (options.cleanup){
+		if(CHILD_PROCESSES.length){
+			GUtil.log(`killing ${CHILD_PROCESSES.length} child processes`);
+			CHILD_PROCESSES.forEach(child => {
+				GUtil.log(`killed ${child.pid}`);
+				child.kill();
+			});
+		}
+	}
+	if (err) GUtil.log(err.stack);
+	if (options.exit) process.exit();
+}
+
+process.on('exit', exitHandler.bind(null,{cleanup:true}));
+process.on('SIGINT', exitHandler.bind(null, {exit:true}));
+process.on('SIGUSR1', exitHandler.bind(null, {exit:true}));
+process.on('SIGUSR2', exitHandler.bind(null, {exit:true}));
+process.on('uncaughtException', exitHandler.bind(null, {exit:true}));
+
 
 // print nice project header :)
 CONFIG.system.header && console.log(CONFIG.system.header(CONFIG))

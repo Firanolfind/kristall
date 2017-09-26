@@ -1,4 +1,3 @@
-require('colors');
 
 const Path 			= require('path'),
 	Hapi 			= require('hapi'),
