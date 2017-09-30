@@ -19,7 +19,7 @@ header = CONFIG => `
  │\\  │   │
  │ \`───────────────────────────────────────────────────────────────────────-.`[border_color] + `
  │  `[border_color] + `   _  __       _       _          _  _  `[text_color] + `                            .─.  \\`[border_color] + `
- │  `[border_color] + `  │ │/ / _ __ (_) ___ │ │_  __ _ │ ││ │ `[text_color] + `        `+`v0.1.3`[version_color]+`             /   \\  │`[border_color] + `
+ │  `[border_color] + `  │ │/ / _ __ (_) ___ │ │_  __ _ │ ││ │ `[text_color] + `        `+`v0.1.4`[version_color]+`             /   \\  │`[border_color] + `
  │  `[border_color] + `  │ ' / │ '__││ │/ __││ __│/ _\` ││ ││ │ `[text_color] + `                          │    /│ │`[border_color] + `
  │  `[border_color] + `  │ . \\ │ │   │ │\\__ \\│ │_│ (_│ ││ ││ │ `[text_color] + `   ` + `npm install kristall`[install_color]+`   │\\  │ │/│`[border_color] + `
  │  `[border_color] + `  │_│\\_\\│_│   │_││___/ \\__│\\__,_││_││_│ `[text_color] + `                          │ \`───' │`[border_color] + `
