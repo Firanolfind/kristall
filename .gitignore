@@ -8,6 +8,7 @@ build/*
 
 source/client/**/*_old.*
 source/server/config.js
+app/package-lock.json
 sftp-config.json
 *.sublime-workspace
 sublime-gulp.log
@@ -25,7 +26,7 @@ CVS
 ._*
 .npmrc
 npm-debug.log
-node_modules
+node_modules/
 config.gypi
 *.orig
 .netbeans
