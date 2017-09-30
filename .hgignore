@@ -11,6 +11,7 @@ build/*
 source/client/**/*_old.*
 source/server/config.js
 sftp-config.json
+*.sublime-workspace
 sublime-gulp.log
 npm-debug
 *.zip
